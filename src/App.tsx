@@ -14,22 +14,27 @@ export const App = () => {
   const [model, setModel] = useState<DiagramModel | null>(null);
   const engine = useRef(createEngine());
   const canvasRef = useRef(null);
+  const [searchText, setSearchText] = useState("");
+  const [triggerSearch, setTriggerSearch] = useState(false);
 
   useEffect(() => {
-    axios.post('http://localhost:3000/api/proc/gen', {
-      text: 'Python'
-    })
-      .then((response) => {
-        if (Array.isArray(response.data)) {
-          setData(response.data);
-        } else {
-          console.error("Response data is not an array:", response.data);
-        }
+    if (triggerSearch) {
+      axios.post('http://localhost:3000/api/proc/gen', {
+        text: searchText
       })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+        .then((response) => {
+          if (Array.isArray(response.data)) {
+            setData(response.data);
+          } else {
+            console.error("Response data is not an array:", response.data);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => setTriggerSearch(false));
+    }
+  }, [triggerSearch, searchText]);
 
   useEffect(() => {
     if (canvasRef.current && Array.isArray(data)) {
@@ -65,6 +70,16 @@ export const App = () => {
     }
   }, [data]);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log("Key pressed:", event.key);
+    if (event.key === 'Enter' && searchText.length > 0) {
+      setTriggerSearch(true);
+    }
+    else {
+      setData([]);
+    }
+  };
+
   return (
     <>
       <div className="bg-white text-black font-sans min-h-screen flex flex-col">
@@ -77,6 +92,9 @@ export const App = () => {
               type="text"
               placeholder="I want to learn ..."
               className="w-full px-4 py-2 rounded-md border border-gray-300 bg-white shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={handleKeyDown}
             />
           </div>
         </header>
