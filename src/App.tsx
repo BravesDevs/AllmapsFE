@@ -1,4 +1,5 @@
 import reactLogo from './assets/image.png';
+import enterIcon from './assets/enter.png';
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
@@ -8,6 +9,8 @@ import createEngine, {
   DiagramModel
 } from '@projectstorm/react-diagrams';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
+
+import { Footer } from './components/footer/Footer';
 
 export const App = () => {
   const [data, setData] = useState<any[]>([]);
@@ -114,14 +117,19 @@ export const App = () => {
 
         <main className="flex-grow p-6">
           <div ref={canvasRef} className="w-full h-96 bg-white rounded-md shadow-md overflow-hidden">
-            {model && <CanvasWidget className="w-full h-full" engine={engine.current} />}
+            {data.length > 0 && <CanvasWidget className="w-full h-full" engine={engine.current} />}
+            {data.length === 0 && (
+              <div className="text-gray-400 flex items-center justify-center w-full h-full">
+                <p>Search Skill and hit</p>
+                <img src={enterIcon} alt="Enter Icon" />
+              </div>
+            )}
           </div>
-        </main>
+        </main >
 
-        <footer className="p-6 bg-gray-100 text-center text-gray-600 border-t">
-          © 2024 Devang MP Productions
-        </footer>
-      </div>
+        <Footer />
+
+      </div >
     </>
   );
 
