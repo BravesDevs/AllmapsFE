@@ -16,11 +16,13 @@ export const App = () => {
   const canvasRef = useRef(null);
   const [searchText, setSearchText] = useState("");
   const [triggerSearch, setTriggerSearch] = useState(false);
+  const [level, setLevel] = useState("Beginner");
 
   useEffect(() => {
     if (triggerSearch) {
       axios.post('http://localhost:3000/api/proc/gen', {
-        text: searchText
+        text: searchText,
+        level: level,
       })
         .then((response) => {
           if (Array.isArray(response.data)) {
@@ -66,7 +68,7 @@ export const App = () => {
       // Update the model
       setModel(newModel);
       engine.current.setModel(newModel);
-      newModel.setLocked(true);
+      // newModel.setLocked(true);
     }
   }, [data]);
 
@@ -96,6 +98,17 @@ export const App = () => {
               onChange={(e) => setSearchText(e.target.value)}
               onKeyDown={handleKeyDown}
             />
+          </div>
+          {/* Drop down for level of difficulty. Beginner, Intermediate or Advanced */}
+          <div className="ml-6">
+            <select
+              className="px-4 py-2 rounded-md border border-gray-300 bg-white shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              onChange={(e) => setLevel(e.target.value)}
+            >
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+            </select>
           </div>
         </header>
 
