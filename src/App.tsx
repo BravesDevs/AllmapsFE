@@ -9,6 +9,7 @@ import createEngine, {
   DiagramModel
 } from '@projectstorm/react-diagrams';
 import { CanvasWidget } from '@projectstorm/react-canvas-core';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 import { Footer } from './components/footer/Footer';
 
@@ -118,6 +119,17 @@ export const App = () => {
         <main className="flex-grow p-6">
           <div ref={canvasRef} className="w-full h-96 bg-white rounded-md shadow-md overflow-hidden">
             {data.length > 0 && <CanvasWidget className="w-full h-full" engine={engine.current} />}
+            {/* Add Loader */}
+
+            {triggerSearch && (
+              <div className="text-gray-400 flex items-center justify-center w-full h-full">
+                <Segment>
+                  <Dimmer active>
+                    <Loader size='massive'>Loading</Loader>
+                  </Dimmer>
+                </Segment>              </div>
+            )}
+
             {data.length === 0 && (
               <div className="text-gray-400 flex items-center justify-center w-full h-full">
                 <p>Search Skill and hit</p>
