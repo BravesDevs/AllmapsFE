@@ -1,5 +1,4 @@
 import reactLogo from './assets/image.png';
-// import enterIcon from './assets/enter.png';
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
@@ -7,8 +6,6 @@ import { createModel } from './helpers/functions';
 import createEngine, {
   DiagramModel
 } from '@projectstorm/react-diagrams';
-// import { CanvasWidget } from '@projectstorm/react-canvas-core';
-// import { Dimmer, Loader } from 'semantic-ui-react';
 import { Footer } from './components/Footer/Footer';
 import MapCanvas from './components/MapCanvas/MapCanvas';
 import References from './components/References/References';

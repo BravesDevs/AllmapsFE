@@ -4,6 +4,8 @@ import './main.css'
 //     [key: string]: string[];
 // };
 
+
+// Fuckin random light color generator.
 const getRandomLighterColor = () => {
     const letters = 'BCDEF';
     let color = '#';
