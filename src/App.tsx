@@ -1,5 +1,5 @@
 import reactLogo from './assets/image.png';
-import enterIcon from './assets/enter.png';
+// import enterIcon from './assets/enter.png';
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
@@ -7,13 +7,17 @@ import { createModel } from './helpers/functions';
 import createEngine, {
   DiagramModel
 } from '@projectstorm/react-diagrams';
-import { CanvasWidget } from '@projectstorm/react-canvas-core';
-import { Dimmer, Loader } from 'semantic-ui-react';
-import { Footer } from './components/footer/Footer';
+// import { CanvasWidget } from '@projectstorm/react-canvas-core';
+// import { Dimmer, Loader } from 'semantic-ui-react';
+import { Footer } from './components/Footer/Footer';
+import MapCanvas from './components/MapCanvas/MapCanvas';
+import References from './components/References/References';
+
 
 export const App = () => {
   const [data, setData] = useState<any[]>([]);
   let [model, setModel] = useState<DiagramModel | null>(null);
+  let [references, setReferences] = useState<any>({});
   const engine = useRef(createEngine());
   const canvasRef = useRef(null);
   const [searchText, setSearchText] = useState("");
@@ -26,9 +30,10 @@ export const App = () => {
         text: searchText,
         level: level,
       })
-        .then((response) => {
-          if (Array.isArray(response.data)) {
-            setData(response.data);
+        .then((response: any) => {
+          if (Array.isArray(response.data.roadmap)) {
+            setData(response.data.roadmap);
+            setReferences(response.data.references);
           } else {
             console.error("Response data is not an array:", response.data);
           }
@@ -86,22 +91,9 @@ export const App = () => {
         </header>
 
         <main className="flex-grow p-6">
-          <div ref={canvasRef} className="w-full h-96 bg-gray-800 rounded-md shadow-md overflow-hidden">
-            {data.length > 0 && <CanvasWidget className="w-full h-96" engine={engine.current} />}
-            {triggerSearch && (
-              <div className="text-gray-400 flex items-center justify-center w-full h-full">
-                <Dimmer active>
-                  <Loader>Loading</Loader>
-                </Dimmer>
-              </div>
-            )}
-            {data.length === 0 && (
-              <div className="text-gray-400 flex items-center justify-center w-full h-full">
-                <p>Search Skill and hit</p>
-                <img src={enterIcon} alt="enter" className="w-6 h-6 ml-2 bg-white" />
-              </div>
-            )}
-          </div>
+
+          <MapCanvas canvasRef={canvasRef} data={data} triggerSearch={triggerSearch} engine={engine.current} />
+          <References references={references} />
         </main>
         <Footer />
       </div>
