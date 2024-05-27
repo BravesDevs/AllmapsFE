@@ -1,9 +1,7 @@
 import { Key } from 'react';
 import './main.css'
-// type ReferencesType = {
-//     [key: string]: string[];
-// };
 
+// Fuckin random light color generator.
 const getRandomLighterColor = () => {
     const letters = 'BCDEF';
     let color = '#';
