@@ -12,6 +12,7 @@
   "dependencies": {
     "@projectstorm/react-diagrams": "^7.0.4",
     "axios": "^1.6.8",
+    "class-validator": "^0.14.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "semantic-ui-css": "^2.5.0",
