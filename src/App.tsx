@@ -9,7 +9,7 @@ import createEngine, {
 import { Footer } from './components/Footer/Footer';
 import MapCanvas from './components/MapCanvas/MapCanvas';
 import References from './components/References/References';
-
+import { applicationConfig } from '../configs/appConfig';
 
 export const App = () => {
   const [data, setData] = useState<any[]>([]);
@@ -23,7 +23,7 @@ export const App = () => {
 
   useEffect(() => {
     if (triggerSearch) {
-      axios.post('http://localhost:3000/api/proc/gen', {
+      axios.post(applicationConfig.hostUrl + applicationConfig.generateEndpoint, {
         text: searchText,
         level: level,
       })
