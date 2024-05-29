@@ -11,6 +11,7 @@ import MapCanvas from './components/MapCanvas/MapCanvas';
 import References from './components/References/References';
 import { applicationConfig } from '../configs/appConfig';
 
+
 export const App = () => {
   const [data, setData] = useState<any[]>([]);
   let [model, setModel] = useState<DiagramModel | null>(null);
@@ -54,6 +55,7 @@ export const App = () => {
     if (event.key === 'Enter' && searchText.length > 0) {
       setTriggerSearch(true);
     } else {
+      setReferences({});
       setData([]);
     }
   };
@@ -90,7 +92,7 @@ export const App = () => {
         <main className="flex-grow p-6">
 
           <MapCanvas canvasRef={canvasRef} data={data} triggerSearch={triggerSearch} engine={engine.current} />
-          <References references={references} />
+          <References references={references} triggerSearch={triggerSearch} />
         </main>
         <Footer />
       </div>
