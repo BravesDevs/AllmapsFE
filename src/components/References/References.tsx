@@ -1,7 +1,7 @@
 import { Key } from 'react';
 import './main.css'
 
-// Fuckin random - light color generator.
+// 
 const getRandomLighterColor = () => {
     const letters = 'BCDEF';
     let color = '#';

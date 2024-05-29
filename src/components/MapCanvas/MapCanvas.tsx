@@ -1,6 +1,7 @@
 import { CanvasEngine, CanvasWidget } from "@projectstorm/react-diagrams";
-import { Dimmer, Loader } from "semantic-ui-react";
+import { Dimmer } from "semantic-ui-react";
 import enterIcon from '../../assets/enter.png';
+import { Loader } from "../UIComponents/Spinner/Spinner";
 
 type MapCanvasProps = {
     canvasRef: any;
@@ -16,7 +17,7 @@ const MapCanvas = ({ canvasRef, data, triggerSearch, engine }: MapCanvasProps) =
             {triggerSearch && (
                 <div className="text-gray-400 flex items-center justify-center w-full h-full">
                     <Dimmer active>
-                        <Loader>Loading</Loader>
+                        <Loader message={"Generating map...."} />
                     </Dimmer>
                 </div>
             )}
