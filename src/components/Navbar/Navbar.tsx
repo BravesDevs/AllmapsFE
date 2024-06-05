@@ -1,5 +1,4 @@
 import reactLogo from '../../assets/image.png';
-import { useState } from 'react';
 
 type props = {
     searchText: string;

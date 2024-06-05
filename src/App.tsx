@@ -1,4 +1,3 @@
-import reactLogo from './assets/image.png';
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
