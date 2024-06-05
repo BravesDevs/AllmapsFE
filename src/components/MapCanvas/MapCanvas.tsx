@@ -14,7 +14,7 @@ const MapCanvas = ({ canvasRef, data, triggerSearch, engine }: MapCanvasProps) =
     return (
         <div ref={canvasRef} className="w-full h-96 bg-gray-800 rounded-md shadow-md overflow-hidden">
             {data.length > 0 && <CanvasWidget className="w-full h-96" engine={engine} />}
-            {triggerSearch && (
+            {triggerSearch && data.length == 0 && (
                 <div className="text-gray-400 flex items-center justify-center w-full h-full">
                     <Dimmer active>
                         <Loader message={"Generating map...."} />

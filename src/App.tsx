@@ -54,10 +54,11 @@ export const App = () => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && searchText.length > 0) {
       setTriggerSearch(true);
-    } else {
-      setReferences({});
-      setData([]);
+
     }
+    setReferences({});
+    setData([]);
+
   };
 
   // ...
