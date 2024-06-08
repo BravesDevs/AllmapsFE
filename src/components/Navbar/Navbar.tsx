@@ -42,7 +42,7 @@ const Navbar = ({
                 </div>
                 {/* <div className="flex items-center space-x-4 w-full md:w-auto md:order-2"> */}
 
-                <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
+                {/* <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
                     <ul className="flex flex-col p-4 mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium bg-gray-50 rounded-lg border border-gray-100 md:bg-white md:dark:bg-gray-900 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
                             <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Login</a>
@@ -54,7 +54,7 @@ const Navbar = ({
                             <a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
                         </li>
                     </ul>
-                </div>
+                </div> */}
                 <select
                     className="h-12 px-4 py-4 rounded-md border border-gray-600 bg-gray-800 text-white shadow-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     onChange={(e) => setLevel(e.target.value)}
