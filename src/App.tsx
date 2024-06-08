@@ -10,6 +10,7 @@ import MapCanvas from './components/MapCanvas/MapCanvas';
 import References from './components/References/References';
 import Navbar from './components/Navbar/Navbar';
 import { applicationConfig } from '../configs/appConfig';
+import { About } from './components/About/About';
 
 
 export const App = () => {
@@ -77,6 +78,7 @@ export const App = () => {
           <MapCanvas canvasRef={canvasRef} data={data} triggerSearch={triggerSearch} engine={engine.current} />
           <References references={references} triggerSearch={triggerSearch} />
         </main>
+        <About />
         <Footer />
       </div>
     </>
