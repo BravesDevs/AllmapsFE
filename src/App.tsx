@@ -78,7 +78,7 @@ export const App = () => {
           <MapCanvas canvasRef={canvasRef} data={data} triggerSearch={triggerSearch} engine={engine.current} />
           <References references={references} triggerSearch={triggerSearch} />
         </main>
-        <About />
+        {/* <About /> */}
         <Footer />
       </div>
     </>
